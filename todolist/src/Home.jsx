@@ -19,8 +19,6 @@ function Home() {
         fetchData();
     }, []);
 
-    // Bagian fungsi di dalam Home.jsx
-// Fitur Ceklis
 const handleStatusUpdate = (id) => {
     axios.put('http://localhost:3001/update/' + id)
         .then(() => fetchData())
@@ -30,7 +28,6 @@ const handleStatusUpdate = (id) => {
 // Fitur Simpan Edit
 const handleSaveEdit = (id) => {
     if (editValue.trim() !== "") {
-        // Mengirim objek { task: editValue } agar teks tidak hilang
         axios.put('http://localhost:3001/edit/' + id, { task: editValue })
             .then(() => {
                 setIsEditing(null);
@@ -81,7 +78,7 @@ const handleSaveEdit = (id) => {
                                 </div>
                                 <div className="actions">
                                     {isEditing === todo.id ? (
-                                        // Tombol Save (Centang)
+                                        // Tombol Save
                                         <button
                                             className="save-btn"
                                             onClick={() => handleSaveEdit(todo.id)} // Pastikan todo.id masuk ke sini
@@ -89,7 +86,7 @@ const handleSaveEdit = (id) => {
                                             <BsCheckLg />
                                         </button>
                                     ) : (
-                                        // Tombol Pensil (Masuk mode edit)
+                                        // Tombol Pensil
                                         <span onClick={() => {
                                             setIsEditing(todo.id);
                                             setEditValue(todo.task);

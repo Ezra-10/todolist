@@ -30,7 +30,7 @@ app.post('/add', (req, res) => {
     });
 });
 
-// 3. FITUR CEKLIS (Mengatasi 404 Not Found)
+// 3. FITUR CEKLIS
 app.put('/update/:id', (req, res) => {
     const { id } = req.params;
     db.query("UPDATE todos SET done = NOT done WHERE id = ?", [id], (err, result) => {
