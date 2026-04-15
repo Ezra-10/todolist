@@ -14,6 +14,13 @@ function Create({ fetchData }) {
             .catch(err => console.log(err));
     }
 
+    // Fungsi untuk handle tekan Enter
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleAdd();
+        }
+    }
+
     return (
         <div className="create_form">
             <input 
@@ -21,6 +28,7 @@ function Create({ fetchData }) {
                 placeholder="Enter Task" 
                 value={task}
                 onChange={(e) => setTask(e.target.value)} 
+                onKeyDown={handleKeyDown} // Tambahkan event listener di sini
             />
             <button type="button" onClick={handleAdd}>Add</button>
         </div>

@@ -13,7 +13,7 @@ const db = mysql.createConnection({
     database: 'todo_db'
 });
 
-// Ambil data
+// 1. Ambil data
 app.get('/get', (req, res) => {
     db.query("SELECT * FROM todos", (err, result) => {
         if (err) return res.status(500).json(err);
@@ -21,15 +21,40 @@ app.get('/get', (req, res) => {
     });
 });
 
-// Hapus data (PASTIKAN BAGIAN INI SAMA)
+// 2. Tambah data
+app.post('/add', (req, res) => {
+    const task = req.body.task;
+    db.query("INSERT INTO todos (task, done) VALUES (?, ?)", [task, false], (err, result) => {
+        if (err) return res.status(500).json(err);
+        return res.json(result);
+    });
+});
+
+// 3. FITUR CEKLIS (Mengatasi 404 Not Found)
+app.put('/update/:id', (req, res) => {
+    const { id } = req.params;
+    db.query("UPDATE todos SET done = NOT done WHERE id = ?", [id], (err, result) => {
+        if (err) return res.status(500).json(err);
+        return res.json(result);
+    });
+});
+
+// 4. FITUR EDIT TEKS
+app.put('/edit/:id', (req, res) => {
+    const { id } = req.params;
+    const { task } = req.body;
+    db.query("UPDATE todos SET task = ? WHERE id = ?", [task, id], (err, result) => {
+        if (err) return res.status(500).json(err);
+        return res.json(result);
+    });
+});
+
+// 5. Hapus data
 app.delete('/delete/:id', (req, res) => {
     const { id } = req.params;
     const sql = "DELETE FROM todos WHERE id = ?";
     db.query(sql, [id], (err, result) => {
-        if (err) {
-            console.error("Gagal hapus di database:", err);
-            return res.status(500).json(err);
-        }
+        if (err) return res.status(500).json(err);
         return res.json({ message: "Berhasil dihapus", result });
     });
 });
