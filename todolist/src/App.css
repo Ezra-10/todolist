@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    width: 450px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    color: white;
+}
+
+h1 { margin-bottom: 1.5rem; font-weight: 600; }
+
+.create_form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.create_form input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.create_form button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background: #38b2ac;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.create_form button:hover { background: #319795; }
+
+.task-card {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.line_through {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.icon-check { color: #38b2ac; font-size: 1.2rem; }
+.icon-circle { color: #ccc; font-size: 1.2rem; }
+.icon-trash { 
+    color: #e53e3e; 
+    cursor: pointer; 
+    transition: 0.2s;
+}
+
+.icon-trash:hover { transform: scale(1.2); }
+
+.no-record { opacity: 0.7; margin-top: 20px; }
+
+/* Gaya untuk teks yang dicoret */
+.line_through {
+  text-decoration: line-through;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Transisi halus untuk card task */
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #1e293b;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transition: all 0.3s ease;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icon-check { color: #10b981; font-size: 20px; }
+.icon-circle { color: #cbd5e1; font-size: 20px; }
+.icon-trash { color: #ef4444; cursor: pointer; font-size: 18px; }
+.icon-trash:hover { color: #b91c1c; }
